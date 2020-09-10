@@ -18,6 +18,7 @@ __author__ = 'Atomicoo'
 import numpy as np
 print(np.__version__)
 
+np.random.seed(0)
 
 ## @@@@@@@@@@
 ## 基础知识

@@ -1,3 +1,7 @@
+## ================================== ##
+## DL WITH PYTORCH: A 60 MINUTE BLITZ ##
+## ================================== ##
+
 ## 参考资料
 #  https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py
 
@@ -15,6 +19,7 @@ from __future__ import print_function
 import torch
 print(torch.__version__)
 
+torch.random.seed(0)
 
 ## @@@@@@@@@@
 ## 快速开始
