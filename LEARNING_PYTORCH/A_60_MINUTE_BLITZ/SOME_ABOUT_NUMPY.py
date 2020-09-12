@@ -7,8 +7,8 @@
 #  中文版：https://www.numpy.org.cn/user/quickstart.html
 
 ## 编程环境
-#  OS：Win10 专业版
-#  IDE：VS Code
+#  OS：Windows 10 Pro
+#  Editor：VS Code
 #  Python：3.7.7 (Anaconda 5.3.0)
 #  NumPy：1.18.5
 

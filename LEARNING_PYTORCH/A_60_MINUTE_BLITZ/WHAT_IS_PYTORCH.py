@@ -6,8 +6,8 @@
 #  https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py
 
 ## 编程环境
-#  OS：Win10 专业版
-#  IDE：VS Code
+#  OS：Windows 10 Pro
+#  Editor：VS Code
 #  Python：3.7.7 (Anaconda 5.3.0)
 #  PyTorch：1.5.1
 
