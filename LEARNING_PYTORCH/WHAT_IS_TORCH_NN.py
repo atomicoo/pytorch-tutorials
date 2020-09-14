@@ -307,7 +307,7 @@ with torch.no_grad():
 ## The whole final code
 
 # %%
-impoort math
+import math
 import pickle
 import gzip
 import requests
