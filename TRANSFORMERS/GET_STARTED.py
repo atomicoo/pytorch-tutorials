@@ -1,5 +1,5 @@
 ## ================================== ##
-##         AUTOGRAD MECHANICS         ##
+##            GET STARTED             ##
 ## ================================== ##
 
 ## 参考资料
@@ -102,12 +102,14 @@ for key, value in inputs.items():
 # %%
 # 模型是标准的`torch.nn.Module`模型（若使用TensorFlow则是`tf.keras.Model`模型）
 # 可以使用PyTorch的方式查看它的所有参数
-for param in model.named_parameters():
-    print(param[0], param[1].size())
+for name, param in model.named_parameters():
+    print(name, param.size())
 
 # %%
 # 使用model
 outputs = model(**inputs)
+# 训练/微调时还需输入labels
+# outputs = model(**inputs, labels=torch.tensor([1, 0]))
 print(outputs)
 
 # %%
