@@ -85,7 +85,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 # %%
 # 使用tokenizer
-inputs = tokenizer("We are very happy to show you the 🤗 Transformers library.")
+inputs = tokenizer("We are very happy to show you the Transformers library.")
 print(inputs)
 
 # %%
@@ -170,9 +170,8 @@ model = DistilBertForSequenceClassification.from_pretrained(model_name, num_labe
 tokenizer = DistilBertTokenizer.from_pretrained(model_name)
 
 # %%
+# 仅用作特征提取
 extractor = pipeline("feature-extraction")
-
-# %%
 features = extractor(
     [ "We are very happy to show you the Transformers library.",
       "We hope you don't hate it." ])

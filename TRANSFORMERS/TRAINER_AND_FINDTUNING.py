@@ -65,7 +65,9 @@ encoded_token = tokenizer(
                     return_tensors='pt')
 inputs, attentions = \
     encoded_token['input_ids'], encoded_token['attention_mask']
+print("Inputs: \n{}\nAttens: \n{}".format(inputs, attentions))
 labels = torch.tensor([1, 0])
+print("Labels: {}".format(labels))
 
 # %%
 # 前向传播

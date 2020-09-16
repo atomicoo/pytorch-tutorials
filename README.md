@@ -1,12 +1,9 @@
 # PyTorch Tutorials
 
-> OS：Windows 10 Pro
->
-> Editor：VS Code
->
-> Python：3.7.7 (Anaconda 5.3.0)
->
-> PyTorch：1.5.1
+> OS：Windows 10 Pro  
+> Editor：VS Code  
+> Python：3.7.7 (Anaconda 5.3.0)  
+> PyTorch：1.5.1  
 
 How to play with PyTorch ?
 
@@ -29,6 +26,7 @@ How to play with PyTorch ?
 
 * Transformers: Quick Tour (PyTorch) [[source](https://github.com/huggingface/transformers#quick-tour)] [[code](https://github.com/atomicoo/pytorch-tutorials/tree/master/TRANSFORMERS/QUICK_TOUR_PYTORCH.py)]
 * Transformers: Get Started [[source](https://huggingface.co/transformers/quicktour.html)] [[code](https://github.com/atomicoo/pytorch-tutorials/tree/master/TRANSFORMERS/GET_STARTED.py)]
+* Transformers: Trainer and Find-tuning [[source](https://huggingface.co/transformers/training.html)] [[code](https://github.com/atomicoo/pytorch-tutorials/tree/master/TRANSFORMERS/TRAINER_AND_FINDTUNING.py)]
 
 </details>
 
