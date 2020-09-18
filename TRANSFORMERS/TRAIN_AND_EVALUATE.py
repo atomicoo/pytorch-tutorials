@@ -103,7 +103,7 @@ trainer.evaluate()
 
 # %%
 # Weights & Biases
-import wandb
-wandb.login()
+# import wandb
+# wandb.login()
 
 # %%

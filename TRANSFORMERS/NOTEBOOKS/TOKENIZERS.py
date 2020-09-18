@@ -1,3 +1,5 @@
+# https://github.com/huggingface/transformers/blob/master/notebooks/01-training-tokenizers.ipynb
+
 # %%
 import requests
 from pathlib import Path

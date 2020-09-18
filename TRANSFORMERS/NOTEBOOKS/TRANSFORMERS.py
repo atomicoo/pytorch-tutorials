@@ -1,3 +1,5 @@
+# https://github.com/huggingface/transformers/blob/master/notebooks/02-transformers.ipynb
+
 # %%
 import torch
 from transformers import AutoModel, AutoTokenizer, BertTokenizer

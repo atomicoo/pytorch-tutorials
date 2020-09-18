@@ -147,9 +147,9 @@ inputs = tokenizer(sequences, padding=True, truncation=True, return_tensors='pt'
 input_ids = inputs['input_ids']
 mask_token_indexes = torch.where(input_ids==tokenizer.mask_token_id)[1].tolist()
 
-token_logits = model(**inputs)[0]
-mask_token_logits = torch.stack([token_logits[i, mask_token_indexes[i], :] \
-    for i in range(len(token_logits))])
+outputs = model(**inputs)[0]
+mask_token_logits = torch.stack([outputs[i, mask_token_indexes[i], :] \
+                                for i in range(len(outputs))])
 mask_token_logits = torch.softmax(mask_token_logits, dim=-1)
 
 top_5_scores, top_5_tokens = torch.topk(mask_token_logits, k=5, dim=-1)
@@ -176,10 +176,66 @@ from transformers import pipeline
 
 nlp = pipeline("ner")
 
-sequence = "Hugging Face Inc. is a company based in New York City. Its headquarters are in DUMBO, therefore very "\
-           "close to the Manhattan Bridge which is visible from the window."
-result = nlp(sequence)
+sequences = [
+    "Hugging Face Inc. is a company based in New York City. Its headquarters are in DUMBO", 
+    "therefore very close to the Manhattan Bridge."]
+result = nlp(sequences)
 
-print(result)
+from pprint import pprint
+pprint(result)
+
+# %%
+from transformers import AutoTokenizer, AutoModelForTokenClassification
+import torch
+
+model_name = 'dbmdz/bert-large-cased-finetuned-conll03-english'
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForTokenClassification.from_pretrained(model_name)
+
+label_list = [
+    "O",       # Outside of a named entity
+    "B-MISC",  # Beginning of a miscellaneous entity right after another miscellaneous entity
+    "I-MISC",  # Miscellaneous entity
+    "B-PER",   # Beginning of a person's name right after another person's name
+    "I-PER",   # Person's name
+    "B-ORG",   # Beginning of an organisation right after another organisation
+    "I-ORG",   # Organisation
+    "B-LOC",   # Beginning of a location right after another location
+    "I-LOC"    # Location
+]
+
+sequences = [
+    "Hugging Face Inc. is a company based in New York City. Its headquarters are in DUMBO", 
+    "therefore very close to the Manhattan Bridge."]
+
+tokens = tokenizer.convert_ids_to_tokens(tokenizer(sequences[0])['input_ids'])
+inputs = tokenizer(sequences, 
+                   padding=True,
+                   truncation=True,
+                   return_tensors='pt')
+input_ids = inputs['input_ids']
+
+outputs = model(**inputs)[0]
+token_logits = torch.softmax(outputs, dim=-1)
+
+label_scores, label_indices = torch.max(token_logits, dim=-1)
+label_scores, label_indices = label_scores.tolist(), label_indices.tolist()
+
+# %%
+results = []
+for i, (indices, scores) in enumerate(zip(label_indices, label_scores)):
+    result = []
+    for index, (indice, score) in enumerate(zip(indices, scores)):
+        if indice == 0: continue
+        result.append({
+            'entity': label_list[indice], 
+            'index': index, 
+            'score': score, 
+            'word': tokenizer.convert_ids_to_tokens([input_ids[i, index]])[0]
+        })
+    results.append(result)
+
+from pprint import pprint
+pprint(results)
 
 # %%
