@@ -6,6 +6,12 @@ import numpy as np
 import pandas as pd
 
 # %%
+# Init wandb
+import wandb
+wandb.login()
+wandb.init(project="pytorch-tutorials")
+
+# %%
 DATA_PATH = Path("data")
 PATH = DATA_PATH / "cola_public"
 
@@ -80,11 +86,13 @@ from transformers.trainer import Trainer, TrainingArguments
 training_args = TrainingArguments(
     output_dir='./results',
     num_train_epochs=1,
+    evaluate_during_training=True,
     per_device_train_batch_size=2,
     per_device_eval_batch_size=2,
     warmup_steps=500,
     weight_decay=0.01,
     logging_dir='./logs',
+    eval_steps=50,
 )
 
 trainer = Trainer(
@@ -100,10 +108,5 @@ trainer.train()
 
 # %%
 trainer.evaluate()
-
-# %%
-# Weights & Biases
-# import wandb
-# wandb.login()
 
 # %%
