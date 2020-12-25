@@ -1,1 +1,13 @@
+**/.vscode/
+**/__pycache__/
+**/*.py[cod]
+**/build/
+**/dist/
+**/data/
+**/logs/
+**/pretrained/
+**/*.pt[h]
+**/*.whl
+**/*.egg*/
+**/.gitignore
 .git/
